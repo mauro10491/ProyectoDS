@@ -110,7 +110,36 @@ public class Login extends javax.swing.JFrame {
         pass = txt_password.getText().trim();
         
         if(!user.equals("") || !pass.equals("")){
-        
+            try {
+                Connection cn = Conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("select tipo_nivel, estatus from usuarios where username = '" + user + "' and password = '" + pass + "'");
+                
+                ResultSet rs = pst.executeQuery();
+                if (rs.next()) {
+                    String tipo_nivel = rs.getString("tipo_nivel"); 
+                    String estatus = rs.getString("estatus"); 
+                    
+                    if(tipo_nivel.equalsIgnoreCase("Administrador") && estatus.equalsIgnoreCase("Activo")){
+                        dispose();
+                        new Administrador().setVisible(true);
+                    } else if(tipo_nivel.equalsIgnoreCase("Capturista") && estatus.equalsIgnoreCase("Activo")){
+                        dispose();
+                        new Capturista().setVisible(true);
+                    } else if(tipo_nivel.equalsIgnoreCase("Tecnico") && estatus.equalsIgnoreCase("Activo")){
+                        dispose();
+                        new Tecnico().setVisible(true);  
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Datos de acceso incorrecto");
+                    txt_user.setText("");
+                    txt_password.setText("");
+                }
+                 
+            } catch (SQLException e) {
+                System.err.println("Error en el boton acceder " + e);
+                JOptionPane.showMessageDialog(null, "Error al iniciar sesion, comunicate con el administrador");
+
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Debes completar todos los campos");
         }
