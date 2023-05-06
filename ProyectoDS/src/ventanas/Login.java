@@ -8,12 +8,18 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.Icon;
+import java.sql.*;
+import clases.Conexion;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author mauri
  */
 public class Login extends javax.swing.JFrame {
+    
+    public static String user = "";
+    String pass = "";
 
     /**
      * Creates new form Login
@@ -55,6 +61,8 @@ public class Login extends javax.swing.JFrame {
         jlabel_Logo = new javax.swing.JLabel();
         txt_user = new javax.swing.JTextField();
         txt_password = new javax.swing.JPasswordField();
+        jbutton_acceder = new javax.swing.JButton();
+        jlabel_footer = new javax.swing.JLabel();
         jlabel_wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,10 +83,38 @@ public class Login extends javax.swing.JFrame {
         txt_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_password.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 370, 210, -1));
+
+        jbutton_acceder.setBackground(new java.awt.Color(153, 153, 255));
+        jbutton_acceder.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        jbutton_acceder.setForeground(new java.awt.Color(255, 255, 255));
+        jbutton_acceder.setText("Acceder");
+        jbutton_acceder.setBorder(null);
+        jbutton_acceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutton_accederActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbutton_acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 420, 210, 35));
+
+        jlabel_footer.setText("creado por Mauricio");
+        getContentPane().add(jlabel_footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, -1, -1));
         getContentPane().add(jlabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbutton_accederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_accederActionPerformed
+        // TODO add your handling code here:
+        
+        user = txt_user.getText().trim();
+        pass = txt_password.getText().trim();
+        
+        if(!user.equals("") || !pass.equals("")){
+        
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes completar todos los campos");
+        }
+    }//GEN-LAST:event_jbutton_accederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,7 +152,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jbutton_acceder;
     private javax.swing.JLabel jlabel_Logo;
+    private javax.swing.JLabel jlabel_footer;
     private javax.swing.JLabel jlabel_wallpaper;
     private javax.swing.JPasswordField txt_password;
     private javax.swing.JTextField txt_user;
