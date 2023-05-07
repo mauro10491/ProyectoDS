@@ -105,6 +105,11 @@ public class Administrador extends javax.swing.JFrame {
         getContentPane().add(jButton_registrarusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, 100));
 
         jButton_Gestionarusuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/informationuser.png"))); // NOI18N
+        jButton_Gestionarusuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_GestionarusuariosActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_Gestionarusuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 120, 100));
 
         jButton_Creatividad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/creatividad.png"))); // NOI18N
@@ -164,6 +169,13 @@ public class Administrador extends javax.swing.JFrame {
         registrarUsuarios.setVisible(true);
         
     }//GEN-LAST:event_jButton_registrarusuarioActionPerformed
+
+    private void jButton_GestionarusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GestionarusuariosActionPerformed
+        
+        GestionarUsuarios gestionarUsuarios = new GestionarUsuarios();
+        gestionarUsuarios.setVisible(true);
+        
+    }//GEN-LAST:event_jButton_GestionarusuariosActionPerformed
 
     /**
      * @param args the command line arguments

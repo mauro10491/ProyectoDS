@@ -183,7 +183,7 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int permisos_cmb, validacion = 0;
-        String nombre, mail, telefono, username, pass, permisos_string;
+        String nombre, mail, telefono, username, pass, permisos_string = "";
         
         mail = txt_mail.getText().trim();
         username = txt_username.getText().trim();
@@ -230,6 +230,42 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Nombre de usuario no disponible");
                 cn.close();
             } else {
+                cn.close();
+                if(validacion == 0){
+                    try {
+                        Connection cn2 = Conexion.conectar();
+                        PreparedStatement pst2 = cn2.prepareStatement("insert into usuarios values (?,?,?,?,?,?,?,?,?)");
+                        
+                        pst2.setInt(1, 0);
+                        pst2.setString(2, nombre);
+                        pst2.setString(3, mail);
+                        pst2.setString(4, telefono);
+                        pst2.setString(5, username);
+                        pst2.setString(6, pass);
+                        pst2.setString(7, permisos_string);
+                        pst2.setString(8, "Activo");
+                        pst2.setString(9, user);
+                        
+                        pst2.executeUpdate();
+                        cn.close();
+                        
+                        Limpiar();
+                        
+                        txt_mail.setBackground(Color.GREEN);
+                        txt_username.setBackground(Color.GREEN);
+                        txt_password.setBackground(Color.GREEN);
+                        txt_nombre.setBackground(Color.GREEN);
+                        txt_telefono.setBackground(Color.GREEN);
+                        
+                        JOptionPane.showMessageDialog(null, "Registro Exitoso.");
+                        this.dispose();
+                    } catch (SQLException e) {
+                        System.err.println("Error en registrar usuario " + e);
+                        JOptionPane.showMessageDialog(null, "Error al registrar, contactate con el administrador");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debes de llenar todos los campos");
+                }
             }
         } catch (SQLException e) {
             System.err.println("Error en validar nombre de usuario " + e);
@@ -290,4 +326,13 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField txt_telefono;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
+
+    public void Limpiar(){
+        txt_mail.setText("");
+        txt_nombre.setText("");
+        txt_password.setText("");
+        txt_telefono.setText("");
+        txt_username.setText("");
+        cmb_niveles.setSelectedIndex(0);
+    }
 }
