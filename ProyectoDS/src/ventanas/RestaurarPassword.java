@@ -149,6 +149,7 @@ public class RestaurarPassword extends javax.swing.JFrame {
             txt_passwordconfirmacion.setBackground(Color.red);
             
             JOptionPane.showMessageDialog(null, "No se admiten contraseñas vacias");
+            System.out.println("");
         }
     }//GEN-LAST:event_jButton_RestaurarPasswordActionPerformed
 
