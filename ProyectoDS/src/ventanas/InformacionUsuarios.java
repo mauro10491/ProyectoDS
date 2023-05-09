@@ -191,6 +191,11 @@ public class InformacionUsuarios extends javax.swing.JFrame {
         txt_RegistradoPor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_RegistradoPor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txt_RegistradoPor.setEnabled(false);
+        txt_RegistradoPor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_RegistradoPorActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_RegistradoPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 210, -1));
 
         cmb_estatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo", " " }));
@@ -313,6 +318,10 @@ public class InformacionUsuarios extends javax.swing.JFrame {
         restaurarPassword.setVisible(true);
         
     }//GEN-LAST:event_jButton_RestaurarPasswordActionPerformed
+
+    private void txt_RegistradoPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_RegistradoPorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_RegistradoPorActionPerformed
 
     /**
      * @param args the command line arguments
