@@ -30,7 +30,6 @@ public class Administrador extends javax.swing.JFrame {
         
         setSize(650,430);
         setResizable(false);
-        
         setTitle("Administrador - sesion de " + user);
         setLocationRelativeTo(null);
         

@@ -36,10 +36,6 @@ public class Login extends javax.swing.JFrame {
         jlabel_wallpaper.setIcon(icono);
         this.repaint();
         
-        ImageIcon wallpaper_Logo = new ImageIcon("src/images/DS.png");
-        Icon icono_logo = new ImageIcon(wallpaper_Logo.getImage().getScaledInstance(jlabel_Logo.getWidth(), jlabel_Logo.getHeight(), Image.SCALE_DEFAULT));
-        jlabel_Logo.setIcon(icono_logo);
-        this.repaint();
     }
     
     @Override
