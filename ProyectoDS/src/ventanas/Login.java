@@ -71,6 +71,11 @@ public class Login extends javax.swing.JFrame {
         txt_user.setForeground(new java.awt.Color(255, 255, 255));
         txt_user.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_user.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txt_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_userActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 330, 210, -1));
 
         txt_password.setBackground(new java.awt.Color(153, 153, 255));
@@ -140,6 +145,10 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debes completar todos los campos");
         }
     }//GEN-LAST:event_jbutton_accederActionPerformed
+
+    private void txt_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_userActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_userActionPerformed
 
     /**
      * @param args the command line arguments
