@@ -63,7 +63,7 @@ public class GestionarClientes extends javax.swing.JFrame {
             model.addColumn("Modificado por");
             
             while (rs.next()) {
-                Object [] fila = new Object[5];
+                    Object [] fila = new Object[5];
                 for(int i = 0; i < 5; i++){
                     fila[i] = rs.getObject(i + 1);
                 }
@@ -86,7 +86,10 @@ public class GestionarClientes extends javax.swing.JFrame {
                 
                 if(fila_point > -1){
                     IDcliente_update = (int)model.getValueAt(fila_point, columna_point);
-                    JOptionPane.showMessageDialog(null, "El ID del cliente es: " + IDcliente_update);
+                    InformacionCliente informacionCliente = new InformacionCliente();
+                    informacionCliente.setVisible(true);
+                    
+                    
                 }
             
             }
