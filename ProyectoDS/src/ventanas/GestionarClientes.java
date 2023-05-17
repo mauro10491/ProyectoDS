@@ -78,7 +78,7 @@ public class GestionarClientes extends javax.swing.JFrame {
             System.out.println("Hubo un error en el llenado de la tabla " + e);
         }
         
-        jTable_clientes.addMouseListener(new MouseAdapter() {
+            jTable_clientes.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e){
                 int fila_point = jTable_clientes.rowAtPoint(e.getPoint());

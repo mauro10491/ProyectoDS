@@ -68,7 +68,7 @@ public class InformacionCliente extends javax.swing.JFrame {
             if(rs.next()){
                 setTitle("Informacion del cliente " + rs.getString("nombre_cliente") + " - Sesion de " + user);
                 
-                jLabel_Titulo.setText("Informacion del cliente " + rs.getString("nombre_cliente"));
+                jLabel_Titulo.setText("Informacion del cliente " + rs.getString("nombre_clien   te"));
                 
                 txt_nombre.setText(rs.getString("nombre_cliente"));
                 txt_mail.setText(rs.getString("email_cliente"));
