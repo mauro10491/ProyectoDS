@@ -296,7 +296,8 @@ public class InformacionCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_UltimaModificacionActionPerformed
 
     private void jButton_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegistrarActionPerformed
-
+        RegistrarEquipo registrarEquipo = new RegistrarEquipo();
+        registrarEquipo.setVisible(true);
         
 
     }//GEN-LAST:event_jButton_RegistrarActionPerformed

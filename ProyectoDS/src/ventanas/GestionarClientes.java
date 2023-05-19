@@ -89,9 +89,7 @@ public class GestionarClientes extends javax.swing.JFrame {
                     InformacionCliente informacionCliente = new InformacionCliente();
                     informacionCliente.setVisible(true);
                     
-                    
                 }
-            
             }
         });
         
