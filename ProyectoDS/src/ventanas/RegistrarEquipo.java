@@ -6,11 +6,13 @@ package ventanas;
 
 import java.sql.*;
 import clases.Conexion;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.Calendar;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 /**
@@ -179,7 +181,74 @@ public class RegistrarEquipo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegistrarActionPerformed
-
+        
+        int validacion = 0;
+        String tipo_equipo, marca, modelo, num_serie, dia_ingreso, mes_ingreso, annio_ingreso, estatus, observaciones;
+        
+        tipo_equipo = cmb_tipoequipo.getSelectedItem().toString();
+        marca = cmb_marca.getSelectedItem().toString();
+        modelo = txt_modelo.getText().trim();
+        num_serie = txt_numSerie.getText().trim();
+        observaciones = jTextPane_observaciones.getText();
+        estatus = "Nuevo Ingreso";
+        
+        Calendar calendar = Calendar.getInstance();
+        
+        dia_ingreso = Integer.toString(calendar.get(Calendar.DATE));
+        mes_ingreso = Integer.toString(calendar.get(Calendar.MONTH));
+        annio_ingreso = Integer.toString(calendar.get(Calendar.YEAR));
+        
+        if(modelo.equals("")){
+            txt_modelo.setBackground(Color.RED);
+            validacion++;
+        }
+        if(num_serie.equals("")){
+            txt_numSerie.setBackground(Color.RED);
+            validacion++;
+        }
+        if(observaciones.equals("")){
+            jTextPane_observaciones.setText("Sin Observaciones");
+        }
+        
+        if (validacion == 0) {
+            try {
+                
+                Connection cn = Conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("insert into equipos values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                
+                pst.setInt(1, 0);
+                pst.setInt(2, IDcliente_update);
+                pst.setString(3, tipo_equipo);
+                pst.setString(4, marca);
+                pst.setString(5, modelo);
+                pst.setString(6, num_serie);
+                pst.setString(7, dia_ingreso);
+                pst.setString(8, mes_ingreso);
+                pst.setString(9, annio_ingreso);
+                pst.setString(10, observaciones);
+                pst.setString(11, estatus);
+                pst.setString(12, user);
+                pst.setString(13, "");
+                pst.setString(14, "");
+                
+                pst.executeUpdate();
+                
+                cn.close();
+                
+                txt_cliente.setBackground(Color.green);
+                txt_modelo.setBackground(Color.green);
+                txt_numSerie.setBackground(Color.GREEN);
+                
+                JOptionPane.showMessageDialog(null, "Registro exitoso");
+                
+                
+            } catch (SQLException e) {
+                System.err.println("Error en registrar equipo");
+                JOptionPane.showMessageDialog(null, "Error al registrar equipo");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
+        }
     }//GEN-LAST:event_jButton_RegistrarActionPerformed
 
     /**
